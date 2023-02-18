@@ -3,6 +3,7 @@ from typing import Union
 from enum import Enum
 from pydantic import BaseModel
 
+
 class ModelName(str, Enum):
     alexnet = "alexnet"
     resnet = "resnet"
@@ -85,3 +86,8 @@ async def create_item(item_id: int, item: Item, q: Union[str, None] = None):
     if q:
         result.update({"q": q})
     return result
+
+if __name__ == '__main__':
+    import uvicorn
+    from setting import settings
+    uvicorn.run('main:app', host='127.0.0.1', port=settings.PORT, reload=settings.DEBUG)
