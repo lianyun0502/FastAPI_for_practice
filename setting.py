@@ -2,56 +2,56 @@ import uuid
 
 from starlette.config import Config
 
-# 配置文件.env，存放为data/.env
+# 載入.env文件
 config = Config("data/.env")
 
 
 class Settings:
-    # 项目版本
+    # 項目版本
     VERSION: str = config("VERSION", default="1.6")
-    # 是否开启DEBUG模式
-    DEBUG = config('DEBUG', cast=bool, default=False)
-    # 端口
-    PORT = config('PORT', cast=int, default=8000)
-    # Sqlite数据库文件
+    # 是否開啟Debug模式
+    DEBUG = config('DEBUG', cast=bool, default=True)
+    # Port number
+    PORT = config('PORT', cast=int, default=5000)
+    # DB文件
     DATABASE_FILE = config('DATABASE_FILE', cast=str, default='data/database.db')
-    # Sqlite套接字
+    # DB URL
     DATABASE_URL = config('DATABASE_URL', cast=str, default=f"sqlite+aiosqlite:///{DATABASE_FILE}")
-    # 数据存储文件夹，文件就不暴露在静态资源里面了
+    # Data文件夾
     DATA_ROOT = './data/' + config('DATA_ROOT', cast=str, default=f"static")
-    # 静态文件夹URL
+    # 靜態文件夾
     STATIC_URL = config('STATIC_URL', cast=str, default="/static")
-    # 开启上传
+    # 是否允許上傳
     ENABLE_UPLOAD = config('ENABLE_UPLOAD', cast=bool, default=True)
-    # 最长天数
+    # 最長保存天數
     MAX_DAYS = config('MAX_DAYS', cast=int, default=7)
-    # 错误次数
+    # 錯誤次數
     ERROR_COUNT = config('ERROR_COUNT', cast=int, default=5)
-    # 错误限制分钟数
+    # 錯誤間隔（分鐘）
     ERROR_MINUTE = config('ERROR_MINUTE', cast=int, default=10)
-    # 上传次数
+    # 上傳次數
     UPLOAD_COUNT = config('UPLOAD_COUNT', cast=int, default=60)
-    # 是否允许永久保存
+    # 是否允許永久保存
     ENABLE_PERMANENT = config('ENABLE_PERMANENT', cast=bool, default=True)
-    # 上传限制分钟数
+    # 上傳限制時間（分鐘）
     UPLOAD_MINUTE = config('UPLOAD_MINUTE', cast=int, default=1)
-    # 删除过期文件的间隔（分钟）
+    # 刪除過期文件間隔（分鐘）
     DELETE_EXPIRE_FILES_INTERVAL = config('DELETE_EXPIRE_FILES_INTERVAL', cast=int, default=10)
     # 管理地址
     ADMIN_ADDRESS = config('ADMIN_ADDRESS', cast=str, default=uuid.uuid4().hex)
-    # 管理密码
+    # 管理密碼
     ADMIN_PASSWORD = config('ADMIN_PASSWORD', cast=str, default=uuid.uuid4().hex)
-    # 文件大小限制，默认10MB
+    # 文件大小限制（MB）
     FILE_SIZE_LIMIT = config('FILE_SIZE_LIMIT', cast=int, default=10) * 1024 * 1024
-    # 网站标题
-    TITLE = config('TITLE', cast=str, default="文件快递柜")
-    # 网站描述
-    DESCRIPTION = config('DESCRIPTION', cast=str, default="FileCodeBox，文件快递柜，口令传送箱，匿名口令分享文本，文件")
-    # 网站关键词
-    KEYWORDS = config('KEYWORDS', cast=str, default="FileCodeBox，文件快递柜，口令传送箱，匿名口令分享文本，文件")
-    # 存储引擎：['aliyunsystem','filesystem']
+    # 網站標題
+    TITLE = config('TITLE', cast=str, default="TextCodeBox")
+    # 網站描述
+    DESCRIPTION = config('DESCRIPTION', cast=str, default="匿名口令分享文本，文件")
+    # 網站關鍵字
+    KEYWORDS = config('KEYWORDS', cast=str, default="匿名,分享,文本,文件")
+    # 儲存系統：['aliyunsystem','filesystem']
     STORAGE_ENGINE = config('STORAGE_ENGINE', cast=str, default="filesystem")
-    # 存储引擎配置
+    # 儲存系統配置
     STORAGE_CONFIG = {}
     # Banners
     BANNERS = [{
