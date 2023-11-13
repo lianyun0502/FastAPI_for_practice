@@ -7,7 +7,7 @@ config = Config("data/.env")
 
 
 class Settings:
-    # 項目版本
+    # 項目版本starlette
     VERSION: str = config("VERSION", default="1.6")
     # 是否開啟Debug模式
     DEBUG = config('DEBUG', cast=bool, default=True)
