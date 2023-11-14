@@ -6,3 +6,4 @@ FastAPI project for practice.
 - 完成基本的sql API架構
 - 根據官網建議將DB相關的module包成一個package
 - 將SQLAlchemy加入環境
+- 記得要將SQLAlchemy的ORM物件與DB連結

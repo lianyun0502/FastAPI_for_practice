@@ -1,9 +1,11 @@
 from sql_app import CURD
 from sql_app import schemas
-from sql_app.database import SessionLocal
+from sql_app import models
+from sql_app.database import SessionLocal, engine
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title='FastAPI DB 4 Pactice')
 
