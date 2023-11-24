@@ -2,6 +2,7 @@ from sql_app import CURD
 from sql_app import schemas
 from sql_app import models
 from sql_app.database import SessionLocal, engine
+
 from fastapi import FastAPI, Depends, HTTPException, Form
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
@@ -21,7 +22,7 @@ def get_db():
 
 @app.get("/", response_class=HTMLResponse)
 def read_root():
-    with open('index.html', 'r', encoding='utf-8') as f:
+    with open('app\index.html', 'r', encoding='utf-8') as f:
         return f.read()
 
 @app.post("/users/", response_model=schemas.User)
