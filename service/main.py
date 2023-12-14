@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import main_route
+from routers import file_route, main_route
 
 
 app = FastAPI(title='FastAPI 4 Pactice',
@@ -7,7 +7,7 @@ app = FastAPI(title='FastAPI 4 Pactice',
               version='1.0.0',
               debug=True)
 
-routers = (main_route.router,)
+routers = (file_route.router,)
 
 for router in routers:
     app.include_router(router)
